@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Optreden{% endblock %}
+
+{% block body %}
+    <h1>Optreden</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ optreden.id }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{{ optreden.Datum ? optreden.Datum|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Aanvang</th>
+                <td>{{ optreden.aanvang ? optreden.aanvang|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Zaal</th>
+                <td>{{ optreden.zaal }}</td>
+            </tr>
+            <tr>
+                <th>MaxSeats</th>
+                <td>{{ optreden.maxSeats }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('optreden_index') }}">back to list</a>
+
+    <a href="{{ path('optreden_edit', {'id': optreden.id}) }}">edit</a>
+
+    {{ include('optreden/_delete_form.html.twig') }}
+{% endblock %}

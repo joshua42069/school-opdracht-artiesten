@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiest index{% endblock %}
+
+{% block body %}
+    <h1>Artiest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Genre</th>
+                <th>Prijs</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artiest in artiests %}
+            <tr>
+                <td>{{ artiest.id }}</td>
+                <td>{{ artiest.naam }}</td>
+                <td>{{ artiest.genre }}</td>
+                <td>{{ artiest.prijs }}</td>
+                <td>
+                    <a href="{{ path('artiest_show', {'id': artiest.id}) }}">show</a>
+                    <a href="{{ path('artiest_edit', {'id': artiest.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('artiest_new') }}">Create new</a>
+{% endblock %}

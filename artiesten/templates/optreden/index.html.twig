@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Optreden index{% endblock %}
+
+{% block body %}
+    <h1>Optreden index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>artiest_Id-artiestnaam</th>
+                <th>Datum</th>
+                <th>Aanvang</th>
+                <th>Zaal</th>
+                <th>MaxSeats</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for optreden in optredens %}
+            <tr>
+                <td>{{ optreden.id }}</td>
+                <td>{{ optreden.artiestid}}</td>
+                <td>{{ optreden.Datum ? optreden.Datum|date('Y-m-d') : '' }}</td>
+                <td>{{ optreden.aanvang ? optreden.aanvang|date('H:i:s') : '' }}</td>
+                <td>{{ optreden.zaal }}</td>
+                <td>{{ optreden.maxSeats }}</td>
+                <td>
+                    <a href="{{ path('optreden_show', {'id': optreden.id}) }}">show</a>
+                    <a href="{{ path('optreden_edit', {'id': optreden.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('optreden_new') }}">Create new</a>
+{% endblock %}
