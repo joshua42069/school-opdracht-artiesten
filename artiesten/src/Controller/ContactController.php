@@ -29,8 +29,6 @@ class ContactController extends AbstractController
                 ->setFrom($contactFormData['email'])
                 ->setTo('yoshypower6@gmail.com')
                 ->setBody(
-                    $contactFormData['naam'],
-                    $contactFormData['onderwerp'],
                     $contactFormData['bericht'],
                     'text/plain'
                 );
